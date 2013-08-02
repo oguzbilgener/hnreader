@@ -11,6 +11,6 @@ A Hacker News app with a modern look for Android 4.0+.
 
 ## To do
 This app is currently read-only. There are some features missing:
-- User login ability
+- User login
 - Voting news/comments
 - Posting new comments
