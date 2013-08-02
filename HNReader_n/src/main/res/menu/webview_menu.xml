@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <item android:id="@+id/browser_back"
+       android:title="@string/browser_back"
+       android:orderInCategory="1"
+       android:showAsAction="always"
+       android:icon="@drawable/ic_navigation_back" />
+    
+    <item android:id="@+id/browser_forward"
+       android:title="@string/browser_forward"
+       android:orderInCategory="2"
+       android:showAsAction="never"
+       android:icon="@drawable/ic_navigation_forward" />
+    
+    <item android:id="@+id/browser_reload"
+       android:title="@string/browser_reload"
+       android:orderInCategory="3"
+       android:showAsAction="ifRoom"
+       android:icon="@drawable/ic_navigation_refresh" />
+    
+    <item android:id="@+id/browser_reader_toggle"
+       android:title="@string/browser_readermode"
+       android:orderInCategory="4"
+       android:showAsAction="always"
+       android:icon="@drawable/ic_threelines" />
+
+	<item android:id="@+id/browser_share"
+		  android:title="@string/browser_share"
+		  android:orderInCategory="5"
+		  android:showAsAction="always"
+		  android:actionProviderClass="android.widget.ShareActionProvider"
+		  android:enabled="true" />
+    
+    <item android:id="@+id/browser_view_comments"
+        android:title="@string/browser_view_comments"
+        android:orderInCategory="6"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/ic_view_comments" />
+    
+    <item android:id="@+id/browser_open_in_browser"
+        android:title="@string/browser_open_in_browser"
+        android:orderInCategory="7"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/ic_location_website" />
+    
+
+</menu>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/comments_root"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/comments_background">
+
+    <ListView
+            android:id="@+id/comments_list"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:headerDividersEnabled="false"
+            android:footerDividersEnabled="false"
+			android:divider="@color/comments_seperator"
+			android:dividerHeight="@dimen/c_item_divider_height"
+            android:smoothScrollbar="true"
+            />
+
+
+    <!-- empty view -->
+    <RelativeLayout android:id="@+id/comments_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+        <TextView
+                android:id="@+id/commentslist_empty_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/comments_list_empty"
+                />
+
+    </RelativeLayout>
+
+</RelativeLayout>

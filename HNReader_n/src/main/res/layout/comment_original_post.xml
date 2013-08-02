@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				xmlns:tools="http://schemas.android.com/tools"
+				android:id="@+id/op_parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/op_min_height"
+    android:maxHeight="@dimen/op_max_height"
+	android:clickable="false"
+	tools:context=".comments.CommentsActivity">
+
+	<TextView
+			android:id="@+id/op_ownerText"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentTop="true"
+			android:layout_marginTop="@dimen/c_user_top_margin"
+			android:layout_marginLeft="@dimen/c_user_left_margin"
+			android:textAllCaps="true"
+			android:textSize="@dimen/c_user_size"
+			android:textColor="@color/op_body"
+			android:fontFamily="sans-serif"
+			android:hint="@string/comment_owner_hint"
+			/>
+
+	<LinearLayout
+			android:id="@+id/op_border"
+			android:layout_width="match_parent"
+			android:layout_height="@dimen/c_user_border_height"
+			android:layout_below="@id/op_ownerText"
+			android:orientation="horizontal"
+			android:layout_marginLeft="@dimen/c_user_border_left_margin"
+			android:layout_marginRight="@dimen/c_user_border_right_margin"
+			android:layout_marginTop="@dimen/c_user_border_top_margin"
+			android:layout_marginBottom="@dimen/op_user_border_bottom_margin"
+			android:background="@color/c_user_border" />
+    
+    <TextView
+        android:id="@+id/op_titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/op_border"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="@dimen/op_title_top_margin"
+        android:layout_marginBottom="@dimen/op_title_bottom_margin"
+        android:layout_marginLeft="@dimen/op_title_left_margin"
+        android:layout_marginRight="@dimen/op_title_right_margin"
+        android:textSize="@dimen/op_title_text_size"
+        android:maxLines="2"
+        android:textStyle="normal"
+        android:textColor="@color/op_title_t"
+        android:shadowColor="@color/op_title_shadow"
+        android:shadowDx="0"
+        android:shadowDy="1"
+        android:shadowRadius="3"
+        android:ellipsize="marquee"
+        android:hint="@string/comment_title_hint"
+    />
+
+	<TextView
+		android:id="@+id/op_bodyText"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentLeft="true"
+		android:layout_below="@id/op_titleText"
+		android:layout_marginLeft="@dimen/op_body_left_margin"
+		android:layout_marginRight="@dimen/op_body_right_margin"
+		android:layout_marginTop="@dimen/op_body_top_margin"
+		android:layout_marginBottom="@dimen/op_body_bottom_margin"
+		android:textSize="@dimen/op_body_text_size"
+		android:textColor="@color/op_body"
+		android:autoLink="web"
+		android:ellipsize="marquee"
+		android:fontFamily="sans-serif"
+		/>
+    
+    <TextView
+        android:id="@+id/op_domainText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/op_bodyText"
+        android:layout_marginLeft="@dimen/op_domain_left_margin"
+        android:textSize="@dimen/op_domain_text_size"
+        android:textColor="@color/op_domain"
+		android:fontFamily="sans-serif-light"
+     />
+    
+    <TextView
+        android:id="@+id/op_pointsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/op_bodyText"
+        android:layout_marginLeft="@dimen/op_points_left_margin"
+        android:layout_marginRight="@dimen/op_points_right_margin"
+        android:layout_marginTop="@dimen/op_points_top_margin"
+        android:textSize="@dimen/op_points_text_size"
+        android:textColor="@color/op_points"
+		android:fontFamily="sans-serif-light"
+     />
+    
+    <TextView
+        android:id="@+id/op_feedDot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/op_pointsText"
+        android:layout_below="@id/op_bodyText"
+        android:layout_marginLeft="@dimen/op_dot_left_margin"
+        android:layout_marginTop="@dimen/op_dot_top_margin"
+        android:textSize="@dimen/op_dot_text_size"
+        android:textColor="@color/op_dot"
+        android:text="@string/feed_item_dot"
+    />
+    
+    <TextView
+        android:id="@+id/op_commentsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/op_feedDot"
+        android:layout_below="@id/op_bodyText"
+        android:layout_marginRight="@dimen/op_comments_right_margin"
+        android:layout_marginTop="@dimen/op_comments_top_margin"
+        android:textSize="@dimen/op_comments_text_size"
+        android:textColor="@color/op_comments"
+		android:fontFamily="sans-serif-light"
+     />
+
+	<TextView
+		android:id="@+id/op_timeText"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentRight="true"
+		android:layout_marginTop="@dimen/c_time_top_margin"
+		android:layout_marginRight="@dimen/c_time_right_margin"
+		android:textSize="@dimen/c_time_size"
+		android:textColor="@color/c_time"
+		android:hint="@string/comment_time_hint"
+	/>
+
+	<View
+		android:id="@+id/op_bottomDivider"
+		android:layout_width="match_parent"
+		android:layout_height="1dp"
+		android:layout_marginTop="0dp"
+		android:layout_alignParentBottom="true"
+		android:layout_below="@id/op_feedDot"
+		android:background="@drawable/comment_op_divider"
+		/>
+
+</RelativeLayout>

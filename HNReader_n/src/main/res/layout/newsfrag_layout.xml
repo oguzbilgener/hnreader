@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/feed_root"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/feed_background">
+
+    <ListView
+            android:id="@+id/feed_list"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:headerDividersEnabled="false"
+            android:footerDividersEnabled="false"
+            android:divider="@drawable/newslist_divider"
+            android:dividerHeight="1dp"
+            android:smoothScrollbar="true"
+            />
+
+    <!-- empty view -->
+    <RelativeLayout android:id="@+id/newslist_empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <TextView
+            android:id="@+id/newslist_empty_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/news_list_empty"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>

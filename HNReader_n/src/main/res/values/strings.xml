@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">HN Reader</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_section_trending">Front Page</string>
+    <string name="title_section_new">New</string>
+    <string name="title_section_ask">Ask</string>
+
+    <string-array name="title_sections">
+        <item>Front Page</item>
+        <item>New</item>
+        <item>Ask</item>
+    </string-array>
+    
+    <string name="activity_title_reader">Reader</string>
+    <string name="activity_title_comments">Comments</string>
+    <string name="activity_title_settings">Settings</string>
+    
+    <string name="loading">Loading&#8230;</string>
+    
+    
+    <!-- Pull To Refresh -->
+    <string name="pull_to_refresh_pull_label">Swipe down to refresh</string>
+    <string name="pull_to_refresh_refreshing_label">Refreshing…</string>
+    
+    
+    <!-- Feed -->
+    <string name="feed_item_title_empty">(no title)</string>
+    <string name="feed_item_website_empty">(no info)</string>    
+    <string name="news_list_empty">Refresh to download new submissions</string>
+    
+    
+  	<string name="feed_item_dot">•</string>
+    
+    <string name="feed_item_title_holder">LOL.</string>
+    <string name="feed_item_domain_holder">domain.com</string>
+    <string name="feed_item_points_holder">138 points</string>
+    <string name="feed_item_comments_holder">25 comments</string>
+    <string name="feed_item_owner_holder">43 minutes ago by SomeUser</string>
+    
+    <!-- Errors -->
+    <string name="newslist_error_no_internet">Could not connect to Internet.</string>
+    <string name="newslist_error_unknown">Could not refresh</string>
+    <string name="newslist_error_url_null">Could not load news. \n Please Refresh</string>
+    <string name="newslist_error_list_empty">Could not load news. \n Please Refresh</string>
+    <string name="newslist_error_url_expired">Your page reference has expired. \n Please Refresh the news.</string>
+    <string name="commentslist_error_no_internet">Could not connect to Internet.</string>
+    <string name="commentslist_error_unknown">Could not download the comments</string>
+    
+    <!-- Browser buttons -->
+    <string name="browser_back">Back</string>
+    <string name="browser_forward">Forward</string>
+    <string name="browser_reload">Reload</string>
+    <string name="browser_cancel">Cancel</string>
+    <string name="browser_readermode">Switch to reader mode</string>
+    <string name="browser_webmode">Switch to web mode</string>
+    <string name="browser_share">Send Page</string>
+    <string name="browser_open_in_browser">Open in browser</string>
+    <string name="browser_open">Open in&#8230;</string>
+    <string name="browser_details">Details</string>
+    <string name="browser_view_comments">View Comments</string>
+    
+    <string name="loadmore_text">Loading&#8230;</string>
+
+    <!-- Comments -->
+    <string name="comments_list_empty">There are not any comments for this post.</string>
+	<string name="comments_share">Share this page</string>
+
+    <string name="comment_user_hint"></string>
+    <string name="comment_text_hint"></string>
+    <string name="comment_time_hint"></string>
+	<string name="comment_title_hint"></string>
+	<string name="comment_owner_hint"></string>
+    <string name="comment_user_holder">oguzbilgener</string>
+    <string name="comment_text_holder">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="comment_text_holder_alt">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</string>
+    <string name="comment_time_holder">1 hour ago</string>
+    
+    <!-- Settings Categories -->
+    <string name="s_cat_debug">Debug</string>
+
+    <string name="s_title_delete_news">Delete downloaded news</string>
+
+
+    <string name="s_result_debug">Deleted news.</string>
+
+	<!-- Feed Warning Message -->
+	<string name="f_warning_message_text">Page reference has expired.</string>
+	<string name="f_warning_message_refresh">Refresh</string>
+
+	<!-- About Dialog -->
+	<string name="about_menu_title">About</string>
+	<string name="about_title">About HNReader</string>
+	<string name="about_brief">Version %1$s (%2$s) \nHNReader was developed by Oğuz Bilgener and it is completely open source.</string>
+	<string name="about_email">Contact developer</string>
+	<string name="about_rate">Rate on Play Store</string>
+	<string name="about_github">View source on GitHub</string>
+
+	<string name="contact_email_title">HNReader Support</string>
+	<string name="contact_email_dialog_title">Choose an Email Client</string>
+
+</resources>

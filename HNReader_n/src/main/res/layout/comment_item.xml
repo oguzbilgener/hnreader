@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/comment_parent"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+>
+	<!-- the depth indicator -->
+    <LinearLayout
+        android:id="@+id/comment_depth_indicator"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/c_depth_0"
+        tools:ignore="Suspicious0dp">
+			<!-- the shadow -->
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:background="@drawable/vertical_shadow" />
+		</LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/comment_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/c_item_min_height"
+		android:paddingBottom="@dimen/c_item_bottom_padding" >
+
+        <TextView
+            android:id="@+id/commentUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="@dimen/c_user_top_margin"
+            android:layout_marginLeft="@dimen/c_user_left_margin"
+			android:textAllCaps="true"
+			android:textSize="@dimen/c_user_size"
+            android:hint="@string/comment_user_hint"
+        />
+
+		<LinearLayout
+			android:id="@+id/commentUserBorder"
+			android:layout_width="match_parent"
+			android:layout_height="@dimen/c_user_border_height"
+			android:layout_below="@id/commentUser"
+			android:orientation="horizontal"
+			android:layout_marginLeft="@dimen/c_user_border_left_margin"
+			android:layout_marginRight="@dimen/c_user_border_right_margin"
+			android:layout_marginTop="@dimen/c_user_border_top_margin"
+			android:layout_marginBottom="@dimen/c_user_border_bottom_margin"
+			android:background="@color/c_user_border" />
+
+        <TextView
+            android:id="@+id/commentText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/commentUserBorder"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="@dimen/c_text_top_margin"
+            android:layout_marginBottom="@dimen/c_text_bottom_margin"
+            android:layout_marginLeft="@dimen/c_text_left_margin"
+            android:layout_marginRight="@dimen/c_text_right_margin"
+            android:textSize="@dimen/c_text_size"
+            android:textColor="@color/feed_item_title"
+            android:ellipsize="marquee"
+			android:autoLink="web"
+			android:lineSpacingExtra="@dimen/c_text_line_spacing_extra"
+            android:hint="@string/comment_text_hint"
+        />
+
+        <TextView
+            android:id="@+id/commentTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/c_time_top_margin"
+            android:layout_marginRight="@dimen/c_time_right_margin"
+            android:textSize="@dimen/c_time_size"
+            android:textColor="@color/c_time"
+            android:hint="@string/comment_time_hint"
+         />
+    </RelativeLayout>
+</LinearLayout>

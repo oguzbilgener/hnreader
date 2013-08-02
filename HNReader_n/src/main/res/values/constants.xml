@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Fragment Tasks -->
+    <string name="FRAGMENT_TASKER">fragment_tasker</string>
+    <string name="FRAGMENT_TASK">fragment_task</string>
+    <string name="FRAGMENT_TARGET">fragment_target</string>
+    <string name="FEED_REFRESH">feed_task_refresh</string>
+    <string name="FEED_SCROLLTOP">feed_task_scrolltop</string>
+    <string name="FEED_REFRESH_AUTO">feed_refresh_auto</string>
+    <string name="FRAG_SELECTED">frag_selected</string>
+
+    <!-- News List -->
+    <string name="NEWS_LIST_STATE">news_list_state_9909</string>
+	
+	<!-- URLs -->
+    <string name="instapaper_mobilizer_url">http://www.instapaper.com/text?u=%s</string>
+	
+	<!-- Intent Bundle -->
+	<string name="BUNDLE_OPEN_ARTICLE">bundle_open_article_89012</string>
+	<string name="BUNDLE_ARTICLE_TITLE">bundle_article_title_89012</string>
+	<string name="BUNDLE_ARTICLE_ID">bundle_article_id_89012</string>
+    <string name="BUNDLE_OPEN_COMMENTS">bundle_open_comments_89012</string>
+	
+	<!-- SharedPreferences File -->
+	<string name="sharedprefs_main">MAIN_STORE</string>
+	
+	<!-- Main Store Keys -->
+	<string name="mobilizer_enabled_key">MOBILIZER_ENABLED_x</string>
+
+    <!-- Settings keys -->
+    <string name="s_key_delete_news">SETTINGS_KEY_DELETE_NEWS</string>
+
+	<string name="VERSION_NAME">Alpha 1</string>
+
+	<string name="github_project_url">http://github.com/oguzbilgener/hnreader</string>
+	<string name="playstore_prefix">market://details?id=</string>
+	<string name="developer_email">hnreader@bilgener.net</string>
+</resources>

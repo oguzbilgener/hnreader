@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    
+	<!-- Feed item -->
+		<dimen name="feed_item_height">65dp</dimen>
+		<dimen name="feed_item_min_height">45dp</dimen>
+		<dimen name="feed_item_max_height">65dp</dimen>
+		<!-- item title -->
+	    <dimen name="item_title_top_margin">4dp</dimen>
+	    <dimen name="item_title_bottom_margin">2dp</dimen>
+	    <dimen name="item_title_left_margin">8dp</dimen>
+	    <dimen name="item_title_right_margin">3dp</dimen>
+	    <dimen name="item_title_text_size">15sp</dimen>
+	    
+	     <!-- domain -->
+	    <dimen name="item_domain_left_margin">8dp</dimen>
+	    <dimen name="item_domain_bottom_margin">7dp</dimen>
+	    <dimen name="item_domain_text_size">12sp</dimen>
+	    
+	    <!-- points -->
+	    <dimen name="item_points_left_margin">4dp</dimen>
+	    <dimen name="item_points_right_margin">10dp</dimen>
+        <dimen name="item_points_top_margin">1dp</dimen>
+	    <dimen name="item_points_bottom_margin">7dp</dimen>
+	    <dimen name="item_points_text_size">11sp</dimen>
+	    
+	    <!-- comments -->
+	    <dimen name="item_comments_right_margin">0dp</dimen>
+        <dimen name="item_comments_top_margin">1dp</dimen>
+	    <dimen name="item_comments_bottom_margin">7dp</dimen>
+	    <dimen name="item_comments_text_size">11sp</dimen>
+	    
+	    <!-- owner -->
+	    <dimen name="item_owner_left_margin">16dp</dimen>
+	    <dimen name="item_owner_bottom_margin">6dp</dimen>
+	    <dimen name="item_owner_text_size">10sp</dimen>
+	    
+	    <!-- dot -->
+	    <dimen name="item_dot_left_margin">4dp</dimen>
+        <dimen name="item_dot_top_margin">1dp</dimen>
+	    <dimen name="item_dot_bottom_margin">7dp</dimen>
+	    <dimen name="item_dot_text_size">12sp</dimen>
+
+    <!-- Comment item -->
+        <dimen name="c_item_min_height">45dp</dimen>
+		<dimen name="c_item_bottom_padding">2dp</dimen>
+		<dimen name="c_item_divider_height">2px</dimen>
+
+        <!-- comment user -->
+        <dimen name="c_user_top_margin">4dp</dimen>
+        <dimen name="c_user_left_margin">8dp</dimen>
+        <dimen name="c_user_size">12sp</dimen>
+
+		<!-- comment user border -->
+		<dimen name="c_user_border_height">1px</dimen>
+		<dimen name="c_user_border_left_margin">8dp</dimen>
+		<dimen name="c_user_border_right_margin">8dp</dimen>
+		<dimen name="c_user_border_top_margin">2dp</dimen>
+		<dimen name="c_user_border_bottom_margin">4dp</dimen>
+
+        <!-- comment text -->
+        <dimen name="c_text_top_margin">0dp</dimen>
+        <dimen name="c_text_left_margin">8dp</dimen>
+        <dimen name="c_text_right_margin">8dp</dimen>
+        <dimen name="c_text_bottom_margin">8dp</dimen>
+        <dimen name="c_text_size">14sp</dimen>
+		<dimen name="c_text_line_spacing_extra">3sp</dimen>
+
+        <!-- comment time -->
+        <dimen name="c_time_top_margin">5dp</dimen>
+        <dimen name="c_time_right_margin">8dp</dimen>
+        <dimen name="c_time_size">10sp</dimen>
+
+
+	<!-- News Feed Warning -->
+		<dimen name="f_warning_height">40dp</dimen>
+		<dimen name="f_warning_message_size">18sp</dimen>
+		<dimen name="f_warning_seperator_vertical_margin">16dp</dimen>
+
+
+	<!-- Comments Original Post -->
+		<!-- op container -->
+		<dimen name="op_height">65dp</dimen>
+		<dimen name="op_min_height">45dp</dimen>
+		<dimen name="op_max_height">200dp</dimen>
+		<!-- op title -->
+		<dimen name="op_title_top_margin">0dp</dimen>
+		<dimen name="op_title_bottom_margin">2dp</dimen>
+		<dimen name="op_title_left_margin">8dp</dimen>
+		<dimen name="op_title_right_margin">3dp</dimen>
+		<dimen name="op_title_text_size">16sp</dimen>
+
+		<!-- op owner -->
+		<dimen name="op_owner_top_margin">0dp</dimen>
+		<dimen name="op_owner_bottom_margin">5dp</dimen>
+		<dimen name="op_owner_left_margin">8dp</dimen>
+		<dimen name="op_owner_right_margin">8dp</dimen>
+		<dimen name="op_owner_text_size">12sp</dimen>
+
+		<dimen name="op_user_border_bottom_margin">2dp</dimen>
+
+		<!-- op body -->
+		<dimen name="op_body_top_margin">2dp</dimen>
+		<dimen name="op_body_bottom_margin">10dp</dimen>
+		<dimen name="op_body_left_margin">8dp</dimen>
+		<dimen name="op_body_right_margin">8dp</dimen>
+		<dimen name="op_body_text_size">14sp</dimen>
+
+		<!-- op domain -->
+		<dimen name="op_domain_left_margin">7dp</dimen>
+		<dimen name="op_domain_bottom_margin">7dp</dimen>
+		<dimen name="op_domain_text_size">12sp</dimen>
+
+		<!-- op points -->
+		<dimen name="op_points_left_margin">4dp</dimen>
+		<dimen name="op_points_right_margin">10dp</dimen>
+		<dimen name="op_points_top_margin">1dp</dimen>
+		<dimen name="op_points_bottom_margin">7dp</dimen>
+		<dimen name="op_points_text_size">11sp</dimen>
+
+		<!-- op comments -->
+		<dimen name="op_comments_right_margin">0dp</dimen>
+		<dimen name="op_comments_top_margin">1dp</dimen>
+		<dimen name="op_comments_bottom_margin">7dp</dimen>
+		<dimen name="op_comments_text_size">11sp</dimen>
+
+		<!-- dot -->
+		<dimen name="op_dot_left_margin">4dp</dimen>
+		<dimen name="op_dot_top_margin">1dp</dimen>
+		<dimen name="op_dot_bottom_margin">7dp</dimen>
+		<dimen name="op_dot_text_size">12sp</dimen>
+
+	<!-- About Dialog -->
+		<dimen name="a_brief_marginLeft">12dp</dimen>
+		<dimen name="a_brief_marginRight">12dp</dimen>
+		<dimen name="a_brief_marginTop">8dp</dimen>
+		<dimen name="a_brief_marginBottom">12dp</dimen>
+
+		<dimen name="a_block_marginLeft">0dp</dimen>
+		<dimen name="a_block_marginRight">0dp</dimen>
+		<dimen name="a_block_marginTop">0dp</dimen>
+		<dimen name="a_block_marginBottom">0dp</dimen>
+
+		<dimen name="a_block_text_size">16sp</dimen>
+
+		<dimen name="a_block_divider_marginLeft">0dp</dimen>
+		<dimen name="a_block_divider_marginRight">0dp</dimen>
+		<dimen name="a_block_divider_marginTop">0dp</dimen>
+		<dimen name="a_block_divider_marginBottom">0dp</dimen>
+
+		<dimen name="a_block_divider_height">1px</dimen>
+
+	   
+</resources>

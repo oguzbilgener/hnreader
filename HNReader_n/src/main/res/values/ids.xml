@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ids for PullToRefresh HeaderTransformer -->
+    <item type="id" name="ptr_content" />
+    <item type="id" name="ptr_text_opaque_bg" />
+    <item type="id" name="ptr_text" />
+    <item type="id" name="ptr_progress" />
+    
+    <!-- ids for NewsListAdapter -->
+    <item type="id" name="newsitem_object" />
+    <item type="id" name="newsitem_index" />
+    <item type="id" name="newsitem_id" />
+    <item type="id" name="newsitem_article_link" />
+	<item type="id" name="newsitem_article_title" />
+
+    <!-- ids for CommentsListAdapter -->
+    <item type="id" name="commentitem_object" />
+    <item type="id" name="commentitem_index" />
+    <item type="id" name="commentitem_id" />
+    <item type="id" name="commentitem_depth" />
+    <item type="id" name="commentitem_hidden" />
+    <item type="id" name="comments_op_article_link" />
+    <item type="id" name="comments_op_article_title" />
+    <item type="id" name="commentitem_user_name" />
+
+	<item type="id" name="op_object" />
+
+</resources>

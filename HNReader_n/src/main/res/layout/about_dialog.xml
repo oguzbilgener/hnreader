@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/about_container"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+
+	<TextView
+		android:id="@+id/about_brief"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/about_brief"
+		android:layout_marginLeft="@dimen/a_brief_marginLeft"
+		android:layout_marginRight="@dimen/a_brief_marginRight"
+		android:layout_marginTop="@dimen/a_brief_marginTop"
+		android:layout_marginBottom="@dimen/a_brief_marginBottom"
+		android:autoLink="web"/>
+
+		<LinearLayout
+			android:id="@+id/about_block"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+
+			<View style="@style/AboutBlockDivider" />
+
+			<TextView
+				android:id="@+id/about_link_rate"
+				style="@style/AboutBlockItem"
+				android:text="@string/about_rate" />
+
+			<View style="@style/AboutBlockDivider" />
+
+			<TextView
+					android:id="@+id/about_link_email"
+					style="@style/AboutBlockItem"
+					android:text="@string/about_email" />
+
+			<View style="@style/AboutBlockDivider" />
+
+			<TextView
+					android:id="@+id/about_link_github"
+					style="@style/AboutBlockItem"
+					android:text="@string/about_github" />
+
+		</LinearLayout>
+
+	</LinearLayout>

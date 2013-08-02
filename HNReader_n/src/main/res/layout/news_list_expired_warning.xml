@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/news_list_expired_warning"
+	android:layout_width="match_parent"
+	android:layout_height="@dimen/f_warning_height"
+	android:orientation="horizontal"
+	android:background="@color/f_warning_bg"
+>
+	<!-- Expired Message -->
+	<LinearLayout
+		android:id="@+id/news_list_expired_message"
+		android:layout_width="0dp"
+		android:layout_height="match_parent"
+		android:layout_weight="0.75"
+		android:orientation="vertical"
+		android:gravity="center">
+
+		<TextView
+			android:id="@+id/news_list_expired_message_text"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="@dimen/f_warning_message_size"
+			android:textColor="@color/f_warning_message"
+			android:text="@string/f_warning_message_text" />
+
+	</LinearLayout>
+
+	<!-- Seperator -->
+	<LinearLayout
+		android:id="@+id/news_list_expired_seperator"
+		android:layout_width="1px"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:background="@color/f_warning_seperator"
+		android:layout_marginTop="@dimen/f_warning_seperator_vertical_margin"
+		android:layout_marginBottom="@dimen/f_warning_seperator_vertical_margin"
+	/>
+
+	<!-- Button-ish Layout -->
+	<LinearLayout
+		android:id="@+id/news_list_expired_clickable"
+		android:layout_width="0dp"
+		android:layout_height="match_parent"
+		android:layout_weight="0.25"
+		android:clickable="true"
+		style="?android:borderlessButtonStyle"
+		android:gravity="center">
+
+			<TextView android:id="@+id/news_list_expired_clickable_text"
+					  android:layout_width="wrap_content"
+					  android:layout_height="wrap_content"
+					  android:clickable="false"
+					  android:textColor="@color/f_warning_refresh"
+					  android:text="@string/f_warning_message_refresh" />
+
+	</LinearLayout>
+
+</LinearLayout>

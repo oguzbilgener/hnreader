@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:minHeight="45dp"
+    android:layout_height="45dp"
+    android:background="@color/loadmore_bg">
+    <LinearLayout
+        android:layout_height="1dp"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:background="@color/loadmore_divider" />
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal">
+	    <ProgressBar 
+		    android:id="@+id/loadmore_progress"
+		    android:indeterminateOnly="true"
+		    android:minHeight="30dip"
+		    android:maxHeight="30dip"
+		    android:minWidth="30dip"
+		    android:maxWidth="30dip"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		 	android:paddingRight="12dp"   
+		  />
+	    	<TextView
+	    	    android:id="@+id/loadmore_text"
+	    	    android:layout_width="wrap_content"
+	    	    android:layout_height="30dp"
+	    	    android:text="@string/loadmore_text"
+	    	    android:textColor="@color/loadmore_text"
+	    	    android:gravity="center"
+	    	/>
+	</LinearLayout>
+</RelativeLayout>

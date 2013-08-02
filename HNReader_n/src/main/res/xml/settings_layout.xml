@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/s_cat_debug">
+        <Preference
+                android:defaultValue="false"
+                android:key="@string/s_key_delete_news"
+                android:title="@string/s_title_delete_news" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

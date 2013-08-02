@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- used by HNTheme -->
+    <color name="pressed_hntheme">#CCC0C0C0</color>
+
+	<color name="white">#ffffff</color>
+
+    <!-- feed item -->
+    <color name="feed_background">#f0f0f0</color>
+    <color name="feed_item_title">#ff313131</color>
+    <color name="feed_item_title_shadow">#d8d8d8</color>
+    <color name="feed_item_points">#f4494950</color>
+    <color name="feed_item_domain">#f4494950</color>
+    <color name="feed_item_comments">#f4494950</color>
+    <color name="feed_item_dot">#ffb4b4b4</color>
+    <color name="feed_list_divider">#ffe8e8e8</color>
+
+    <!-- news feed header swipe refresh -->
+    <color name="swipe_refresh_text">#0099CC</color>
+
+    <!-- news feed load more indicator -->
+    <color name="loadmore_text">#787878</color>
+    <color name="loadmore_divider">#e4e4e4</color>
+    <color name="loadmore_bg">@android:color/transparent</color>
+
+    <!-- comment -->
+	<color name="comments_background">#f0f0f0</color>
+	<color name="comments_seperator">#ffd9d9d9</color>
+    <color name="c_user">#ff646464</color>
+    <color name="c_text">#343434</color>
+    <color name="c_time">#787878</color>
+	<color name="c_user_border">#ffcdcdcd</color>
+
+    <!-- comment depths -->
+    <color name="c_depth_0">#eeeeee</color>
+    <color name="c_depth_1">#dddddd</color>
+    <color name="c_depth_2">#cccccc</color>
+    <color name="c_depth_3">#bbbbbb</color>
+    <color name="c_depth_4">#aaaaaa</color>
+    <color name="c_depth_5">#999999</color>
+    <color name="c_depth_6">#888888</color>
+    <color name="c_depth_7">#777777</color>
+    <color name="c_depth_8">#666666</color>
+    <color name="c_depth_9">#555555</color>
+
+	<!-- comments original post -->
+	<!-- feed item -->
+	<color name="op_background">#f0f0f0</color>
+	<color name="op_title_t">#ff313131</color>
+	<color name="op_title_shadow">#d8d8d8</color>
+	<color name="op_body">#ff292929</color>
+	<color name="op_owner">#f4494950</color>
+	<color name="op_points">#f4494950</color>
+	<color name="op_domain">#f4494950</color>
+	<color name="op_comments">#f4494950</color><!-- ffa3a3a3 -->
+	<color name="op_dot">#ffb4b4b4</color>
+	<color name="op_divider">#ff4d4d4d</color>
+
+	<!-- news feed warning -->
+	<color name="f_warning_bg">#88000000</color>
+	<color name="f_warning_seperator">#55ffffff</color>
+	<color name="f_warning_message">#fff4ff4c</color>
+	<color name="f_warning_refresh">#ffffff</color>
+
+	<color name="a_block_text">#ff515151</color>
+	<color name="a_block_divider">#ffd6d6d6</color>
+    
+</resources>

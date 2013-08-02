@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/feed_item_min_height"
+    android:maxHeight="@dimen/feed_item_max_height">
+    
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="@dimen/item_title_top_margin"
+        android:layout_marginBottom="@dimen/item_title_bottom_margin"
+        android:layout_marginLeft="@dimen/item_title_left_margin"
+        android:layout_marginRight="@dimen/item_title_right_margin"
+        android:textSize="@dimen/item_title_text_size"
+        android:maxLines="2"
+        android:textStyle="normal"
+        android:textColor="@color/feed_item_title"
+        android:shadowColor="@color/feed_item_title_shadow"
+        android:shadowDx="0"
+        android:shadowDy="1"
+        android:shadowRadius="3"
+        android:ellipsize="marquee"
+        android:hint="@string/feed_item_title_empty"
+        android:text="@string/feed_item_title_holder"
+    />
+    
+    <TextView
+        android:id="@+id/domainText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/titleText"
+        android:layout_marginLeft="@dimen/item_domain_left_margin"
+        android:textSize="@dimen/item_domain_text_size"
+        android:textColor="@color/feed_item_domain"
+		android:fontFamily="sans-serif-light"
+        android:text="@string/feed_item_domain_holder"
+     />
+    
+    <TextView
+        android:id="@+id/pointsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/titleText"
+        android:layout_marginLeft="@dimen/item_points_left_margin"
+        android:layout_marginRight="@dimen/item_points_right_margin"
+        android:layout_marginTop="@dimen/item_points_top_margin"
+        android:textSize="@dimen/item_points_text_size"
+        android:textColor="@color/feed_item_points"
+		android:fontFamily="sans-serif-light"
+        android:text="@string/feed_item_points_holder"
+     />
+    
+    <TextView
+        android:id="@+id/feedDot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/pointsText"
+        android:layout_below="@id/titleText"
+        android:layout_marginLeft="@dimen/item_dot_left_margin"
+        android:layout_marginTop="@dimen/item_dot_top_margin"
+        android:textSize="@dimen/item_dot_text_size"
+        android:textColor="@color/feed_item_dot"
+        android:text="@string/feed_item_dot"
+    />
+    
+    <TextView
+        android:id="@+id/commentsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/feedDot"
+        android:layout_below="@id/titleText"
+        android:layout_marginRight="@dimen/item_comments_right_margin"
+        android:layout_marginTop="@dimen/item_comments_top_margin"
+        android:textSize="@dimen/item_comments_text_size"
+        android:textColor="@color/feed_item_comments"
+		android:fontFamily="sans-serif-light"
+        android:text="@string/feed_item_comments_holder"
+     />
+    
+    <LinearLayout
+        android:id="@+id/linksRow"
+        android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="horizontal"
+		android:baselineAligned="false"
+	>
+        <LinearLayout
+            android:id="@+id/articleLink"
+            android:layout_weight = "0.75"
+            android:layout_width = "0dp"
+            android:layout_height = "match_parent"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="false"
+            style="?android:attr/borderlessButtonStyle"
+        />
+        <LinearLayout
+            android:id="@+id/commentsLink"
+            android:layout_weight = "0.25"
+            android:layout_width = "0dp"
+            android:layout_height = "match_parent"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="false"
+            style="?android:attr/borderlessButtonStyle"
+        />
+    </LinearLayout>    
+    
+
+</RelativeLayout>
