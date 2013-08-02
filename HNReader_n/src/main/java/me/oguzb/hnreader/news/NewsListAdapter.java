@@ -7,7 +7,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.oguzdev.hnclient.NewsItem;
@@ -97,18 +96,6 @@ public class NewsListAdapter extends ArrayAdapter<NewsItem> implements OnClickLi
 		holder.domainText.setText(item.getDomain());
 		holder.pointsText.setText(item.getPoints());
 		holder.commentsText.setText(item.getComments());
-		
-		try // Just in case
-		{
-			// Fix the height of the button holder
-			RelativeLayout.LayoutParams lr = (RelativeLayout.LayoutParams) holder.linksRow.getLayoutParams();
-			lr.height = (int) Utils.getPixelsByDp(getContext(),(float) context.getResources().getInteger(R.dimen.feed_item_max_height));
-			holder.linksRow.setLayoutParams(lr);
-		} catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		
 		
 		// Set onclick listeners
 		holder.articleLink.setOnClickListener(this);

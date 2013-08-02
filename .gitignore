@@ -21,6 +21,7 @@ local.properties
 
 # Android Studio
 .idea/
+gradle/*
 .gradle
 gradlew
 gradlew.bat
