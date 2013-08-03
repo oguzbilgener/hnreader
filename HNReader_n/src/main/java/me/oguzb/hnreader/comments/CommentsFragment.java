@@ -64,7 +64,6 @@ public class CommentsFragment extends Fragment
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        Utils.log.d("[FRAG] onCreate()");
 
         refreshing = false;
         commentsList = new ArrayList<CommentItem>();
@@ -75,7 +74,6 @@ public class CommentsFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        Utils.log.d("[FRAG] onCreateView()");
         View rootView = inflater.inflate(R.layout.commentsfrag_layout, container, false);
 
         // Create our main ListView
@@ -103,7 +101,6 @@ public class CommentsFragment extends Fragment
     public void onAttach(Activity activity)
     {
         super.onAttach(activity);
-        Utils.log.d("[FRAG] onAttach()");
         context = getActivity();
         // Get an ActivityCommunicator that points our parent Activity
         activityCommunicator =(ActivityCommunicator)context;
@@ -113,7 +110,6 @@ public class CommentsFragment extends Fragment
     public void onActivityCreated(Bundle savedInstanceState)
     {
         super.onActivityCreated(savedInstanceState);
-        Utils.log.d("[FRAG] comments  onActivityCreated()");
 
         sendReady();
     }
@@ -133,7 +129,6 @@ public class CommentsFragment extends Fragment
     @Override
     public void onDestroy()
     {
-        Utils.log.d("[FRAG] onDestroy()");
         refreshing = false;
         if(refreshTask!=null)
             refreshTask.cancel(true);
@@ -162,13 +157,12 @@ public class CommentsFragment extends Fragment
         switch(command)
         {
             case CMD_REFRESH:
-                Utils.log.d("[FRAG] CMD_REFRESH received");
                 refresh(false);
                 break;
 
             case CMD_REFRESH_IF_EMPTY:
                 if(commentsList == null || commentsList.isEmpty())
-                { Utils.log.d("[FRAG] CMD_REFRESH_IF_EMPTY received"); refresh(true); }
+                	refresh(true);
                 break;
         }
     }
@@ -177,7 +171,6 @@ public class CommentsFragment extends Fragment
     @Override
     public void onRefreshStarted(View view)
     {
-        Utils.log.d("[FRAG] comments onRefreshStarted()");
         refresh(false);
     }
 
@@ -188,7 +181,6 @@ public class CommentsFragment extends Fragment
     {
         if(refreshing!=null && refreshing)
             return;
-        Utils.log.d("[FRAG] comments refresh()");
 
         // the task might not be ready to start again
         if(refreshTask!=null && !refreshTask.isCancelled())
@@ -221,13 +213,11 @@ public class CommentsFragment extends Fragment
         {
             // Notify the parent activity that the refresh has started
             activityCommunicator.sendMessage(CommentsActivity.MSG_REFRESH_STARTED);
-            Utils.log.d("[CFRAG] starting refresh (RefreshComments)");
             refreshing = true;
         }
         @Override
         protected Integer doInBackground(Void... params)
         {
-            Utils.log.d("[CFRAG] Now loading: "+commentsUrl);
             try {
                 if(!Utils.Connection.isNetworkAvailable(getActivity()))
                     // No Internet? return with error
@@ -259,7 +249,7 @@ public class CommentsFragment extends Fragment
                 }
                 else
                 {
-                    Utils.log.w("downloaded comments list is null");
+                    Utils.log.w("[CFRAG] downloaded comments list is null");
                     return UNKNOWN_ERROR;
                 }
 
@@ -295,7 +285,6 @@ public class CommentsFragment extends Fragment
         protected void onPostExecute(Integer result)
         {
             refreshing = false;
-            Utils.log.d("[CFRAG] finishing refresh (RefreshComments) ["+result+"]");
             switch(result)
             {
                 case SUCCESS:
@@ -303,7 +292,6 @@ public class CommentsFragment extends Fragment
                     commentsAdapter.notifyDataSetChanged();
                     break;
                 case CANCELLED:
-                    Utils.log.d("[CFRAG] RefreshComments task ended prematurely");
                     break;
                 case NO_CONNECTION:
                     Utils.Toast(getActivity(), getString(R.string.commentslist_error_no_internet));

@@ -151,7 +151,6 @@ public class CommentsActivity extends FragmentActivity implements ActivityCommun
 
     public void initFragment()
     {
-        Utils.log.d("[CMT] initFragment()");
         // first set the comments url, then refresh the comments list on startup
         urlSender.setCommentsUrl(commentsUrl);
         refreshComments(true);
@@ -171,7 +170,6 @@ public class CommentsActivity extends FragmentActivity implements ActivityCommun
         switch(message)
         {
             case MSG_FRAGMENT_READY:
-                Utils.log.d("[CMT] comments fragment is ready!");
                 // Active fragment sends us a message when it's ready to start running tasks
                 initFragment();
                 break;
@@ -181,7 +179,6 @@ public class CommentsActivity extends FragmentActivity implements ActivityCommun
                 lockScreenOrientation();
                 break;
             case MSG_REFRESH_FINISHED:
-                Utils.log.d("[CMT] comments frag finished!");
                 // Notify PullToRefreshAttacher that the refresh has finished
                 showProgressBar(false);
                 releaseScreenOrientation();

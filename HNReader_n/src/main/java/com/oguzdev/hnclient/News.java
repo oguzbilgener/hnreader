@@ -84,10 +84,6 @@ public class News
 				if(td1.html().equals(""))
 				{
 					// and this kind of items do not include vote link
-                    /*Utils.log.i("-------"+(r/3)+ "-------");
-                    Utils.log.i("size: "+tds1.size());
-                    Utils.log.i("\n"+row1.html()+"\n*\n"+row2.html());
-                    Utils.log.i("------------");*/
 					td1 = tds1.get(2);
 					td2 = tds2.get(1);
 

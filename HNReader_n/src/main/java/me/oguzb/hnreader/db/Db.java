@@ -48,7 +48,7 @@ public class Db
 			dbh.close();
 		}catch(Exception e)	{
 			e.printStackTrace();
-			Utils.log.w("cannot close db "+e.toString());
+			Utils.log.w("[DB] cannot close db "+e.toString());
 		}
 	}
 	
@@ -123,7 +123,6 @@ public class Db
 		try
 		{
 			db.execSQL("DELETE FROM "+DbHelper.T_NEWS+" WHERE "+DbHelper.C_NEWS_TYPE+"="+type);
-			Utils.log.d("[DB] Successfully cleared items with type: "+type);
 		}
 		catch(Exception e)
 		{

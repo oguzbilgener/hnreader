@@ -108,7 +108,6 @@ public class NewsFragment extends Fragment
     public void onCreate(Bundle savedInstanceState)
     {
     	super.onCreate(savedInstanceState);
-    	Utils.log.d("[FRAG] onCreate()");
     	
     	refreshing = false;
     	loadingMore = false;
@@ -127,7 +126,6 @@ public class NewsFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) 
     {
-    	Utils.log.d("[FRAG] onCreateView()");
         View rootView = inflater.inflate(R.layout.newsfrag_layout, container, false);
 		LayoutInflater activityInflater = ((LayoutInflater) getParent().getSystemService(Context.LAYOUT_INFLATER_SERVICE));
 
@@ -173,7 +171,6 @@ public class NewsFragment extends Fragment
 	public void onAttach(Activity activity) 
 	{
 	   super.onAttach(activity);
-	   Utils.log.d("[FRAG] onAttach()");
 	   context = getActivity();
 	   // Get an ActivityCommunicator that points our parent Activity
 	   activityCommunicator =(ActivityCommunicator) getActivity();
@@ -183,8 +180,7 @@ public class NewsFragment extends Fragment
 	public void onActivityCreated(Bundle savedInstanceState) 
 	{
 		super.onActivityCreated(savedInstanceState);
-		Utils.log.d("[FRAG] onActivityCreated()");
-		
+		// When parent Activity is created, fragment becomes ready.
 		sendReady();
 	}
 	
@@ -192,7 +188,6 @@ public class NewsFragment extends Fragment
 	public void onResume()
 	{
 		super.onResume();
-		Utils.log.d("[FRAG] onResume()");
         // Do not let a LoadMore block to stay
         canLoadMore = true;
 		db.open();
@@ -201,7 +196,6 @@ public class NewsFragment extends Fragment
 	@Override
 	public void onPause()
 	{
-		Utils.log.d("[FRAG] onPause()");
 		//db.close();
         // Send newsListView's state to the parent Activity
         sendBundleToActivity(createListStateBundle(getListState()));
@@ -211,7 +205,6 @@ public class NewsFragment extends Fragment
 	@Override
 	public void onDestroy()
 	{
-		Utils.log.d("[FRAG] onDestroy()");
 		refreshing = false;
 		if(refreshTask!=null)
 			refreshTask.cancel(true);
@@ -256,19 +249,16 @@ public class NewsFragment extends Fragment
 		 switch(command)
 		 {
 		 	case CMD_REFRESH:
-		 		Utils.log.d("[FRAG] CMD_REFRESH received");
 		 		refresh(false);
 		 	break;
 		 	
 		 	case CMD_REFRESH_IF_EMPTY:
 		 		if(newsList == null || newsList.isEmpty())
-		 		{ Utils.log.d("[FRAG] CMD_REFRESH_IF_EMPTY received"); refresh(true); }
+		 			refresh(true);
 		 	break;
 		 	
 		 	case CMD_SCROLLTOP:
-		 		Utils.log.d("[FRAG] CMD_SCROLLTOP received");
 				// Scroll to top in the newsListView
-				Utils.Toast(getActivity(), "scroll to top");
 				newsListView.smoothScrollToPosition(0);
 		 	break;
 		 }
@@ -278,7 +268,6 @@ public class NewsFragment extends Fragment
     @Override
     public void onRefreshStarted(View view) 
     {
-    	Utils.log.d("[FRAG] onRefreshStarted()");
     	refresh(false);      
     }
     
@@ -292,7 +281,6 @@ public class NewsFragment extends Fragment
 
     	if(refreshing==true)
     		return;
-    	Utils.log.d("[FRAG] refresh()");
 
     	// the task might not be ready to start again
     	if(refreshTask!=null && !refreshTask.isCancelled())
@@ -328,7 +316,6 @@ public class NewsFragment extends Fragment
     	{
             // Notify the parent activity that the refresh has started
     		activityCommunicator.sendMessage(NewsActivity.MSG_REFRESH_STARTED);
-    		Utils.log.d("[FRAG] starting refresh (RefreshNews)");
     		refreshing = true;
     	}
         @Override
@@ -342,7 +329,6 @@ public class NewsFragment extends Fragment
             	if(hn == null)
             		hn = new HNClient();
             	ArrayList<NewsItem> downloaded = hn.getNewsPage(mainUrl);
-				Utils.log.i("[FRAG] refresh downloaded size: "+downloaded.size());
             	if(downloaded != null)
             	{
             		if(this.isCancelled())
@@ -352,7 +338,6 @@ public class NewsFragment extends Fragment
             		newsList.addAll(downloaded);
                     //Utils.printList(newsList, "newsList after refresh()");
                     nextUrl = hn.getNextLink();
-            		Utils.log.d("[FRAG] RefreshNews next url: "+nextUrl);
             		return SUCCESS;
             	}
             	else
@@ -385,7 +370,6 @@ public class NewsFragment extends Fragment
         protected void onCancelled()
         {
         	refreshing = false;
-        	Utils.log.d("[FRAG] onCancelled()");
             // Notify the parent activity that the refresh has finished anyways
             activityCommunicator.sendMessage(NewsActivity.MSG_REFRESH_FINISHED);
         }
@@ -394,7 +378,6 @@ public class NewsFragment extends Fragment
         protected void onPostExecute(Integer result) 
         {            
             refreshing = false;
-            Utils.log.d("[FRAG] finishing refresh (RefreshNews) ["+result+"]");
             switch(result)
             {
             	case SUCCESS:
@@ -407,7 +390,6 @@ public class NewsFragment extends Fragment
 					initEnableLoadMoreTask();
             	break;
             	case CANCELLED:
-            		Utils.log.d("[FRAG] RefreshNews task ended prematurely");
             	break;
             	case NO_CONNECTION:
             		Utils.Toast(getActivity(), getString(R.string.newslist_error_no_internet));
@@ -431,8 +413,6 @@ public class NewsFragment extends Fragment
     {    	
     	if(loadingMore==true || !canLoadMore)
     		return;
-
-    	Utils.log.d("[FRAG] loadMore()");
 
     	// the task might not be ready to start again
     	if(loadMore!=null && !loadMore.isCancelled())
@@ -459,7 +439,6 @@ public class NewsFragment extends Fragment
     	{
             // Notify the parent activity that the refresh has started
     		activityCommunicator.sendMessage(NewsActivity.MSG_LOADMORE_STARTED);
-    		Utils.log.v("[FRAG] starting LoadMore");
     		loadingMore = true;
     		showLoadingView(true);
     	}
@@ -497,7 +476,6 @@ public class NewsFragment extends Fragment
             		newsList.addAll(downloaded);
             		nextUrl = hn.getNextLink();
 
-            		Utils.log.d("[FRAG] ("+downloaded.size()+") next url: "+nextUrl);
             		return SUCCESS;
             	}
             	else
@@ -510,11 +488,11 @@ public class NewsFragment extends Fragment
             catch(HttpStatusException he)
             {
             	// TODO: show a nicer error
-            	Utils.log.e("Request to "+he.getUrl()+" returned with HTTP "+he.getStatusCode());
+            	Utils.log.e("[FRAG] Request to "+he.getUrl()+" returned with HTTP "+he.getStatusCode());
             	return UNKNOWN_ERROR;
             }
             catch (Exception e) {
-            	Utils.log.w("Exception in refresh doInBackground: "+e.toString());
+            	Utils.log.w("[FRAG] Exception in refresh doInBackground: "+e.toString());
                 e.printStackTrace();
                 // Error? Notify the parent activity that the refresh has finished anyways
                 return UNKNOWN_ERROR;
@@ -536,7 +514,6 @@ public class NewsFragment extends Fragment
         	loadingMore = false;
         	// Hide "loading" view
         	showLoadingView(false);
-            Utils.log.d("[FRAG] finishing LoadMore ["+result+"]");
             switch(result)
             {
             	case SUCCESS:
@@ -546,7 +523,6 @@ public class NewsFragment extends Fragment
                     new StoreNewsList(downloaded, db, nextUrl, frag_type, false).execute();
             	break;
             	case CANCELLED:
-            		Utils.log.d("[FRAG] LoadMore task ended prematurely");
             	break;
             	case NO_CONNECTION:
                     // No connection? Start a new Timeout to wait for the next try
@@ -610,8 +586,7 @@ public class NewsFragment extends Fragment
                 db.open();
         	long ftime = System.currentTimeMillis();
             ArrayList<NewsItem> stored = db.getNewsList(frag_type);
-			Utils.log.i("[FRAG] stored size: "+stored.size());
-            Utils.log.d("[FRAG] ("+frag_type+") "+(System.currentTimeMillis()-ftime)+" millis to get from db");
+
             if(stored != null)
             {
             	// Retrieve the next url for this fragment, from database
@@ -620,9 +595,6 @@ public class NewsFragment extends Fragment
             	String nextUrlFromDb = db.getNextLink(frag_type);
             	if(nextUrlFromDb != null)
             		nextUrl = nextUrlFromDb;
-            	else
-            		Utils.log.d("[FRAG] ("+frag_type+") LoadMore: next url from db is null");
-                Utils.log.d("[FRAG] next url from db: "+nextUrl);
 
                 // Get the "last updated" value from database
                 Integer lastUpdated_fromDb = db.getLastUpdated(frag_type);
@@ -631,14 +603,12 @@ public class NewsFragment extends Fragment
                 {
                     if(timeoutReached(lastUpdated_fromDb))
                     {
-                        Utils.log.v("[FRAG] GetStored: there are more than 30 items from db");
                         if(frag_type == FRAG_TYPE_HOME)
                         {
                             if(stored.size() >= NEWS_PAGE_ITEMCOUNT)
                             {
                                 // We can only restore the news from homepage
                                 // Because the nextUrl for the first page is always "/next2"
-                                Utils.log.v("[FRAG] GetStored: timeout reached. Delete old ones.");
                                 // If timeout has been reached, the nextUrl might be already expired.
                                 // Trim the list, only display the first page:
 								stored = Utils.sliceNewsList(stored, 0, NEWS_PAGE_ITEMCOUNT);
@@ -648,7 +618,6 @@ public class NewsFragment extends Fragment
                         }
                         else
                         {
-                       		Utils.log.v("[FRAG] GetStored: other type of list");
 							// If timeout has been reached, we cannot restore from other news pages.
                         	// Because the nextUrl for the first page is an expired "fnid"
                         	// Clear the stored list:
@@ -657,23 +626,16 @@ public class NewsFragment extends Fragment
 
                     }
                 }
-                else
-                {
-                    Utils.log.i("last upd from db is null");
-                }
-            	
-            	Utils.log.d("[FRAG] stored size: "+stored.size());
+
             	if(stored.size() == 0)
             	{
-            		Utils.log.d("[FRAG] GetStoredNewsList: stored list is empty.");
             		return STORED_LIST_EMPTY;
             	}
             	if(newsList.size() != 0)
             	{
-            		Utils.log.d("[FRAG] GetStoredNewsList: There are already items in the list. It's too late.");
             		return MAIN_LIST_NOT_EMPTY;
             	}
-                //Utils.printList(stored, "stored list from db");
+
             	newsList.addAll((Collection<NewsItem>) stored);
             	return SUCCESS;
             }
@@ -687,7 +649,6 @@ public class NewsFragment extends Fragment
         @Override
         protected void onPostExecute(Integer result) 
         {
-        	Utils.log.d("GetStoredNewsList result: "+result);
             switch(result)
             {
             	case SUCCESS:
@@ -757,7 +718,6 @@ public class NewsFragment extends Fragment
         		
         		// Finally, update the next url in the db
         		db.setNextLink(frag_type, nextUrl);
-                Utils.log.d("[FRAG] next url to be stored: "+nextUrl);
         		
         		return SUCCESS;
         	}
@@ -776,7 +736,6 @@ public class NewsFragment extends Fragment
     {
         try
         {
-            Utils.log.d("[FRAG] sendBundle()");
             if(!lastStateSet && bundle.containsKey(getString(NEWS_LIST_STATE)))
             {
                 lastStateSet = true;
@@ -815,7 +774,6 @@ public class NewsFragment extends Fragment
      */
     public Bundle createListStateBundle(Parcelable state)
     {
-        Utils.log.d("[FRAG] createListState()");
         Bundle b = new Bundle();
         b.putParcelable(getString(NEWS_LIST_STATE), state);
         return b;
@@ -827,11 +785,8 @@ public class NewsFragment extends Fragment
      */
     public void sendBundleToActivity(Bundle bundle)
     {
-        Utils.log.d("[FRAG] sendBundleToActivity()");
         getParent().sendBundle(bundle);
     }
-
-
 
     /**
      * Displays the emptyView if newsList is empty, \n
@@ -922,7 +877,6 @@ public class NewsFragment extends Fragment
 		{
 			case ListWarningController.CLICKABLE_ID:
 				// Click on list warning refresh button!
-				Utils.log.d("[ACT] onCLick: ListWarning");
 				warningController.hideWarning();
 				// Scroll to top of the list
 				newsListView.smoothScrollToPosition(0);
@@ -968,11 +922,7 @@ public class NewsFragment extends Fragment
 		if(newsList.size()>0 && currentFirstVisibleItem >= newsList.size()-(currentVisibleItemCount+2))
 	    {
 	    	loadMore();
-	    	Utils.log.d("YEP "+currentFirstVisibleItem+"|"+(newsList.size()-(currentVisibleItemCount+2))+"|"+newsList.size());
 	    }
-	    else
-	    	Utils.log.d("NOPE "+currentFirstVisibleItem+"|"+(newsList.size()-(currentVisibleItemCount+2))+"|"+newsList.size());
-		
 	}
 
     /**
@@ -997,7 +947,6 @@ public class NewsFragment extends Fragment
         public void handleMessage(Message msg)
         {
             canLoadMore = true;
-            Utils.log.d("[FRAG] Released LoadMore block");
         }
     }
 
@@ -1006,7 +955,6 @@ public class NewsFragment extends Fragment
      */
     public void initEnableLoadMoreTask()
     {
-        Utils.log.d("[FRAG] initEnableLoadMoreTask()");
         canLoadMore = true;
 		if(enableLoadMoreTimer!=null)
 			enableLoadMoreTimer.cancel();
@@ -1023,7 +971,6 @@ public class NewsFragment extends Fragment
 	public void startLoadMoreEnabledTimeout(int timeout)
 	{
 		canLoadMore = false;
-		Utils.log.d("[FRAG] Set up LoadMore block");
 		enableLoadMoreTimer.schedule(enableLoadMoreTask,timeout);
 	}
     public void startLoadMoreEnabledTimeout()

@@ -166,7 +166,6 @@ public class ReaderWebView extends Activity
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) 
     {
-    	Utils.log.v("[ACT] onCom()");
         getMenuInflater().inflate(R.menu.webview_menu, menu);
         
         
@@ -240,7 +239,6 @@ public class ReaderWebView extends Activity
 		@Override
 		public void onPageStarted(WebView view, String url, Bitmap favicon)
 		{
-			Utils.log.v("[WEBVIEW] onPageStarted()");
 			super.onPageStarted(view, url, favicon);
 			browserControls.loading = true;
 			browserControls.update();
@@ -248,7 +246,6 @@ public class ReaderWebView extends Activity
 		@Override
 		public void onPageFinished(WebView view, String url)
 		{
-			Utils.log.v("[WEBVIEW onPageFinished()");
 			super.onPageFinished(view, url);
 			browserControls.loading = false;
 			browserControls.update();
@@ -294,19 +291,15 @@ public class ReaderWebView extends Activity
 		    	// It will toggle the action bar only when the eventDuration is lower than CLICK_MAX_TIME
 		    	// This way, swipes won't be count
 		    	long eventDuration = event.getEventTime() - event.getDownTime();
-		    	Utils.log.v("[ME] ed: "+eventDuration+" | dx: "+Math.abs(deltaX)+" | dy: "+Math.abs(deltaY));
 		    	if(eventDuration < CLICK_MAX_TIME
 		    			&& Math.abs(deltaX) < MAX_DISTANCE
 		    			&& Math.abs(deltaY) < MAX_DISTANCE)
 		    	{
-		    		Utils.log.v("[ME] yess");
 		    		toggleActionBar();
 		    		/*if(fullscreenAllowed)
 		    			toggleFullscreen(!actionBar.isShowing());*/
 		    		return false;
 		    	}
-		    	else
-		    		Utils.log.v("[ME] noo");
 		    }
 			return false;
 		}
@@ -409,9 +402,8 @@ public class ReaderWebView extends Activity
 		
 		public void share() 
 	    {
-			Utils.log.d("[WEBVIEW] browserControl.share()");
 	        startActivity(createShareIntent());
-	     }
+	    }
 		
 		/**
 		 * Simply go back in local browser

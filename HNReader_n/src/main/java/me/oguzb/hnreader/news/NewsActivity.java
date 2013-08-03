@@ -56,7 +56,6 @@ public class NewsActivity extends FragmentActivity
         getWindow().setFormat(PixelFormat.RGBA_8888);	
         // request progress bar on action bar
         requestWindowFeature(Window.FEATURE_PROGRESS);
-        Utils.log.d("[ACT] onCreate()");
         setContentView(R.layout.newsview_layout);
         // set progress bar as indeterminate
         setProgressBarIndeterminate(true);
@@ -93,27 +92,23 @@ public class NewsActivity extends FragmentActivity
     public void onStart()
     {
     	super.onStart();
-    	Utils.log.d("[ACT] onStart()");
     }
 
     @Override
     public void onResume()
     {
     	super.onResume();
-    	Utils.log.d("[ACT] onResume()");
     }
     
     @Override
     public void onPause()
     {
-    	Utils.log.d("[ACT] onPause()");
     	super.onPause();
     }
 
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) 
     {
-            Utils.log.d("[ACT] onRis()");
             // Restore the previously serialized current dropdown position.
         if (savedInstanceState.containsKey(STATE_SELECTED_NAVIGATION_ITEM))
         {
@@ -127,7 +122,6 @@ public class NewsActivity extends FragmentActivity
     @Override
     public void onSaveInstanceState(Bundle outState) 
     {
-    	Utils.log.d("[ACT] onSis()");
         outState = includeBundleFromFragment(outState);
         // Serialize the current dropdown position.
         outState.putInt(STATE_SELECTED_NAVIGATION_ITEM,
@@ -139,7 +133,6 @@ public class NewsActivity extends FragmentActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) 
     {
-    	Utils.log.d("[ACT] onCom()");
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.news_view_menu, menu);
         return true;
@@ -164,7 +157,6 @@ public class NewsActivity extends FragmentActivity
     @Override
     public boolean onNavigationItemSelected(int position, long id) 
     {
-    	Utils.log.d("[ACT] onNis() " + position);
         // When the given dropdown item is selected, show its contents in the
         // container view.
         Fragment fragment;
@@ -195,7 +187,6 @@ public class NewsActivity extends FragmentActivity
     // Run 
     public void initFragment()
     {
-         Utils.log.d("[ACT] initFragment()");
         // refresh the news feed on startup
         refreshNews(true);
     }
@@ -211,7 +202,7 @@ public class NewsActivity extends FragmentActivity
         }
         catch(Exception e)
         {
-            Utils.log.e("Exception: "+e.toString());
+            Utils.log.e("[ACT] Exception:  "+e.toString());
             e.printStackTrace();
         }
     }
@@ -222,7 +213,6 @@ public class NewsActivity extends FragmentActivity
     	switch(message)
     	{
     		case MSG_FRAGMENT_READY:
-    			Utils.log.d("[ACT] msg fragment is ready!");
     			// Active fragment sends us a message when it's ready to start running tasks
     			initFragment();
     		break;
@@ -233,7 +223,6 @@ public class NewsActivity extends FragmentActivity
     		break;
     		
     		case MSG_REFRESH_FINISHED:
-    			Utils.log.d("[ACT] msg frag finished!");
     			// Notify PullToRefreshAttacher that the refresh has finished
     			showProgressBar(false);
                 // Send newsListView's saved state to Fragment
@@ -242,14 +231,12 @@ public class NewsActivity extends FragmentActivity
     		break;
     		
     		case MSG_LOADMORE_STARTED:
-    			Utils.log.d("[ACT] msg loadmore started!");
     		break;
     		
     		case MSG_LOADMORE_FINISHED:
-    			Utils.log.d("[ACT] msg loadmore finished!");
     		break;
     		default:
-    			Utils.log.w("unknown message to activity: "+message);
+    			Utils.log.w("[ACT] unknown message: "+message);
     	}
    }
 
@@ -260,7 +247,6 @@ public class NewsActivity extends FragmentActivity
     @Override
     public void sendBundle(Bundle bundle)
     {
-        Utils.log.d("[ACT] sendBundle()");
         try
         {
             // was this bundle the news list state?
@@ -278,10 +264,8 @@ public class NewsActivity extends FragmentActivity
 
     public Bundle includeBundleFromFragment(Bundle outState)
     {
-        Utils.log.d("[ACT] includeBundleFromFragment");
         if(dataToSave.containsKey(getString(NEWS_LIST_STATE)))
         {
-            Utils.log.d("[ACT] dataToSave containts the news list state. Now copying that to outState");
             outState.putParcelable(getString(NEWS_LIST_STATE),dataToSave.getParcelable(getString(NEWS_LIST_STATE)));
         }
 
@@ -290,7 +274,6 @@ public class NewsActivity extends FragmentActivity
 
     public Bundle extractBundleFromSavedState(Bundle savedInstanceState)
     {
-        Utils.log.d("[ACT] extractBundleFromSavedState");
         Bundle b = new Bundle();
         if(savedInstanceState.containsKey(getString(NEWS_LIST_STATE)))
             b.putParcelable(getString(NEWS_LIST_STATE), savedInstanceState.getParcelable(getString(NEWS_LIST_STATE)));
@@ -299,7 +282,6 @@ public class NewsActivity extends FragmentActivity
 
     public void sendBundleToFragment(Bundle dataToSend)
     {
-        Utils.log.d("[ACT] sendBundleToFragment()");
         fragmentCommunicator.sendBundle(dataToSend);
     }
 
@@ -330,7 +312,6 @@ public class NewsActivity extends FragmentActivity
 	 */
     public void lockScreenOrientation()
     {
-        Utils.log.d("[ACT] lockScreenOrientation()");
         Display display = getWindowManager().getDefaultDisplay();
         int rotation = display.getRotation();
 
@@ -380,7 +361,6 @@ public class NewsActivity extends FragmentActivity
 
     public void releaseScreenOrientation()
     {
-        Utils.log.d("[ACT] releaseScreenOrientation()");
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
     }
 
