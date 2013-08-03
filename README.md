@@ -1,5 +1,9 @@
 hnreader
 ========
+<a href="https://play.google.com/store/apps/details?id=me.oguzb.hnreader">
+  <img alt="Android app on Google Play"
+       src="https://developer.android.com/images/brand/en_app_rgb_wo_60.png" />
+</a>
 
 A Hacker News app with a modern look for Android 4.0+.
 
