@@ -80,9 +80,21 @@
     
     <!-- Settings Categories -->
     <string name="s_cat_debug">Debug</string>
+	<string name="s_cat_browser">Browser</string>
 
     <string name="s_title_delete_news">Delete downloaded news</string>
+	<string name="s_title_user_agent">Browser User Agent</string>
 
+	<string name="s_dialogtitle_user_agent">Browser User Agent</string>
+
+	<string-array name="s_titles_ua">
+		<item>Default</item>
+		<item>Nexus 4</item>
+		<item>Nexus 7</item>
+		<item>Nexus 10</item>
+		<item>Desktop</item>
+	</string-array>
+	<string name="s_ua_default">Default</string>
 
     <string name="s_result_debug">Deleted news.</string>
 

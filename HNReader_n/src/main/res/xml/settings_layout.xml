@@ -2,11 +2,23 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+	<PreferenceCategory android:title="@string/s_cat_browser">
+		<ListPreference
+				android:key="@string/s_key_user_agent"
+				android:title="@string/s_title_user_agent"
+				android:dialogTitle="@string/s_dialogtitle_user_agent"
+				android:entries="@array/s_titles_ua"
+				android:entryValues="@array/s_titles_ua"
+				android:defaultValue="@string/s_ua_default"
+				/>
+
+	</PreferenceCategory>
+
     <PreferenceCategory android:title="@string/s_cat_debug">
-        <Preference
-                android:defaultValue="false"
-                android:key="@string/s_key_delete_news"
-                android:title="@string/s_title_delete_news" />
+		<Preference
+				android:defaultValue="false"
+				android:key="@string/s_key_delete_news"
+				android:title="@string/s_title_delete_news" />
 
     </PreferenceCategory>
 

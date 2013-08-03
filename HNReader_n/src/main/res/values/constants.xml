@@ -26,13 +26,20 @@
 	
 	<!-- Main Store Keys -->
 	<string name="mobilizer_enabled_key">MOBILIZER_ENABLED_x</string>
+	<string name="ua_key">USER_AGENT_x</string>
 
     <!-- Settings keys -->
     <string name="s_key_delete_news">SETTINGS_KEY_DELETE_NEWS</string>
+	<string name="s_key_user_agent">SETTINGS_KEY_USER_AGENT</string>
 
 	<string name="VERSION_NAME">Alpha 1</string>
 
 	<string name="github_project_url">http://github.com/oguzbilgener/hnreader</string>
 	<string name="playstore_prefix">market://details?id=</string>
-	<string name="developer_email">hnreader@bilgener.net</string>
+	<string name="developer_email">android@bilgener.net</string>
+
+	<string name="ua_phone">Mozilla/5.0 (Linux; U; Android 4.2; en-us; Nexus 4 Build/JOP24G) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30</string>
+	<string name="ua_tablet7">Mozilla/5.0 (Linux; Android 4.2; Nexus 7 Build/JRO03D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/22.0.1025.166  Safari/535.19</string>
+	<string name="ua_tablet">Mozilla/5.0 (Linux; U; Android 4.2; en-us; Nexus 10 Build/JOP12D) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30</string>
+	<string name="ua_desktop">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.95 Safari/537.36</string>
 </resources>

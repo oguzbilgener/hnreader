@@ -121,6 +121,14 @@ public class ReaderWebView extends Activity
 		browser.setWebViewClient(new BrowserClient());
 		browser.setWebChromeClient(new ChromeClient());
 		browser.setOnTouchListener(new BrowserTouchListener());
+
+		// Set the user agent string as preferred
+		int uaVal = prefs.getInt(getString(R.string.ua_key), 0);
+		String uaStr = Utils.getUaString(this, uaVal);
+		if(uaStr != null)
+		{
+			browser.getSettings().setUserAgentString(uaStr);
+		}
 		
 		// finally, tell the webview to load our article url
 		browser.loadUrl(finalUrl);

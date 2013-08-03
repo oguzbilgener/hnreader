@@ -12,6 +12,8 @@ import com.oguzdev.hnclient.Urls;
 
 import java.util.ArrayList;
 
+import me.oguzb.hnreader.R;
+
 public class Utils 
 {
 	public static final String tag = "hnreader";
@@ -140,5 +142,28 @@ public class Utils
 			newList.add(firstList.get(i));
 		}
 		return newList;
+	}
+
+	public static String getUaString(Context context, int setting)
+	{
+		int resId;
+		switch(setting)
+		{
+			case 1:
+				resId = R.string.ua_phone;
+			break;
+			case 2:
+				resId = R.string.ua_tablet7;
+			break;
+			case 3:
+				resId = R.string.ua_tablet;
+			break;
+			case 4:
+				resId = R.string.ua_desktop;
+			break;
+			default:
+				return null;
+		}
+		return context.getString(resId);
 	}
 }
