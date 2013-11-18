@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.PixelFormat;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -303,7 +304,8 @@ public class ReaderWebView extends Activity
 		    			&& Math.abs(deltaX) < MAX_DISTANCE
 		    			&& Math.abs(deltaY) < MAX_DISTANCE)
 		    	{
-		    		toggleActionBar();
+					if(isJellyBeanOrNew())
+		    			toggleActionBar();
 		    		/*if(fullscreenAllowed)
 		    			toggleFullscreen(!actionBar.isShowing());*/
 		    		return false;
@@ -347,14 +349,16 @@ public class ReaderWebView extends Activity
 			return;
 			if(loading)
 			{
-				showActionBar();
+				if(isJellyBeanOrNew())
+					showActionBar();
 				// put "cancel" icon in ActionBar
 				reloadItem.setIcon(R.drawable.ic_navigation_cancel);
 				reloadItem.setTitle(R.string.browser_cancel);
 			}
 			else
 			{
-				hideActionBar();
+				if(isJellyBeanOrNew())
+					hideActionBar();
 				// put "reload" icon in ActionBar
 				reloadItem.setIcon(R.drawable.ic_navigation_refresh);
 				reloadItem.setTitle(R.string.browser_reload);
@@ -587,6 +591,17 @@ public class ReaderWebView extends Activity
 	public void hideActionBar()
 	{
 		actionBar.hide();
+	}
+
+	/**
+	 * Simply determine if android version >= 4.1
+	 * @return boolean if android version is jelly bean or new
+	 */
+	public static boolean isJellyBeanOrNew()
+	{
+		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+			return true;
+		return false;
 	}
 	
 	private void toggleFullscreen(boolean fullscreen)
