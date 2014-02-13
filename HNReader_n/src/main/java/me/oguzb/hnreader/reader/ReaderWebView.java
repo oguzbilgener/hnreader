@@ -11,6 +11,7 @@ import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -35,6 +36,8 @@ public class ReaderWebView extends Activity
 	private WebView browser;
 	private ShareActionProvider mShareActionProvider;
 	private BrowserControls browserControls;
+
+	private GestureDetector clickDetector;
 	
 	private SharedPreferences prefs;
 	
@@ -42,6 +45,9 @@ public class ReaderWebView extends Activity
 	private String finalUrl;
 	private String articleTitle;
 	private String articleId;
+
+	// TODO: Implement onWindowFocusChanged()
+	// TODO: Implement a working GestureDetector that detects onSingleTapUp(MotionEvent)
 	
 	@SuppressLint("SetJavaScriptEnabled")
 	@Override
@@ -122,6 +128,7 @@ public class ReaderWebView extends Activity
 		browser.setWebViewClient(new BrowserClient());
 		browser.setWebChromeClient(new ChromeClient());
 		browser.setOnTouchListener(new BrowserTouchListener());
+		browser.setClickable(true);
 
 		// Set the user agent string as preferred
 		int uaVal = prefs.getInt(getString(R.string.ua_key), 0);
@@ -133,8 +140,10 @@ public class ReaderWebView extends Activity
 		
 		// finally, tell the webview to load our article url
 		browser.loadUrl(finalUrl);
+
+		clickDetector = new GestureDetector(this, new TapUpDetector());
     }
-	
+
 	@Override
 	public void onStart()
 	{
@@ -234,6 +243,24 @@ public class ReaderWebView extends Activity
 		}
 		return true;
 	}
+
+	@Override
+	public void onWindowFocusChanged(boolean hasFocus) {
+		super.onWindowFocusChanged(hasFocus);
+		Utils.log.d("onWindowFocusChanged: "+hasFocus);
+		if (hasFocus) {
+			if(isJellyBeanOrNew())
+				showActionBar();
+
+			if(isKitKatOrNew())
+				showSystemUI();
+
+			// TODO: set up an handler to hide the bars
+		}
+		else {
+			// TODO: cancel the timed handler
+		}
+	}
 	
 	private class BrowserClient extends WebViewClient
 	{
@@ -275,6 +302,7 @@ public class ReaderWebView extends Activity
 			}
 		}
 	}
+
 	private class BrowserTouchListener implements View.OnTouchListener
 	{
 		private float downX, downY, upX, upY;
@@ -306,12 +334,30 @@ public class ReaderWebView extends Activity
 		    	{
 					if(isJellyBeanOrNew())
 		    			toggleActionBar();
+
+					if(isKitKatOrNew())
+						toggleSystemUI();
 		    		/*if(fullscreenAllowed)
 		    			toggleFullscreen(!actionBar.isShowing());*/
 		    		return false;
 		    	}
 		    }
-			return false;
+			// Doesn't work
+			return clickDetector.onTouchEvent(event);
+		}
+	}
+
+	private class TapUpDetector extends GestureDetector.SimpleOnGestureListener
+	{
+		@Override
+		public boolean onSingleTapUp(MotionEvent e)
+		{
+			Utils.log.e("SingleTapUp "+((getWindow().getDecorView().getSystemUiVisibility() & View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION) == 0));
+			if((getWindow().getDecorView().getSystemUiVisibility() & View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION) == 0)
+				hideSystemUI();
+			else
+				showSystemUI();
+			return true;
 		}
 	}
 	
@@ -351,6 +397,9 @@ public class ReaderWebView extends Activity
 			{
 				if(isJellyBeanOrNew())
 					showActionBar();
+
+				if(isKitKatOrNew())
+					showSystemUI();
 				// put "cancel" icon in ActionBar
 				reloadItem.setIcon(R.drawable.ic_navigation_cancel);
 				reloadItem.setTitle(R.string.browser_cancel);
@@ -359,6 +408,9 @@ public class ReaderWebView extends Activity
 			{
 				if(isJellyBeanOrNew())
 					hideActionBar();
+
+				if(isKitKatOrNew())
+					hideSystemUI();
 				// put "reload" icon in ActionBar
 				reloadItem.setIcon(R.drawable.ic_navigation_refresh);
 				reloadItem.setTitle(R.string.browser_reload);
@@ -599,9 +651,16 @@ public class ReaderWebView extends Activity
 	 */
 	public static boolean isJellyBeanOrNew()
 	{
-		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-			return true;
-		return false;
+		return Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN;
+	}
+
+	/**
+	 * Simply determine if android version >= 4.4
+	 * @return boolean if android version is kitkat or new
+	 */
+	public static boolean isKitKatOrNew()
+	{
+		return Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
 	}
 	
 	private void toggleFullscreen(boolean fullscreen)
@@ -613,4 +672,44 @@ public class ReaderWebView extends Activity
 	        attrs.flags &= ~WindowManager.LayoutParams.FLAG_FULLSCREEN;
 	    getWindow().setAttributes(attrs);
 	}
+
+	/**
+	 * Enters into the Immersive mode
+	 */
+	private void hideSystemUI()
+	{
+		// Set the IMMERSIVE flag.
+		// Set the content to appear under the system bars so that the content
+		// doesn't resize when the system bars hide and show.
+		getWindow().getDecorView().setSystemUiVisibility(
+				View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+						| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+						| View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+						| View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
+						| View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
+						| View.SYSTEM_UI_FLAG_IMMERSIVE);
+	}
+
+	/**
+	 * Exits from the Immersive mode
+	 */
+	private void showSystemUI()
+	{
+		getWindow().getDecorView().setSystemUiVisibility(
+				View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+						| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+						| View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+	}
+
+	/**
+	 * Toggles between shown and hidden system UI bars.
+	 */
+	private void toggleSystemUI()
+	{
+		if((getWindow().getDecorView().getSystemUiVisibility() & View.SYSTEM_UI_FLAG_IMMERSIVE) == View.SYSTEM_UI_FLAG_IMMERSIVE)
+			showSystemUI();
+		else
+			hideSystemUI();
+	}
+
 }

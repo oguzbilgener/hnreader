@@ -16,7 +16,7 @@
     <color name="feed_list_divider">#ffe8e8e8</color>
 
     <!-- news feed header swipe refresh -->
-    <color name="swipe_refresh_text">#0099CC</color>
+    <color name="swipe_refresh_text">#ff797776</color> <!-- #0099CC -->
 
     <!-- news feed load more indicator -->
     <color name="loadmore_text">#787878</color>

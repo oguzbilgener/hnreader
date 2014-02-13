@@ -1,7 +1,5 @@
 package me.oguzb.hnreader.news;
 
-import me.oguzb.hnreader.R;
-import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshAttacher.HeaderTransformer;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -16,6 +14,9 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import me.oguzb.hnreader.R;
+import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshAttacher.HeaderTransformer;
 
 /**
  * Custom HeaderTransformer for ActionBarPullToRefresh library
