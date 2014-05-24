@@ -66,6 +66,8 @@ public class NewsActivity extends FragmentActivity
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 
+		actionBar.setIcon(getResources().getDrawable(R.drawable.feed_icon));
+
         // Set up the dropdown list navigation in the action bar.
         actionBar.setListNavigationCallbacks(
                 // Specify a SpinnerAdapter to populate the dropdown list.
@@ -178,8 +180,15 @@ public class NewsActivity extends FragmentActivity
         // This way, we make sure our messages goes to the right Fragment
         this.fragmentCommunicator = (FragmentCommunicator) fragment;
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, fragment).commit();
+		try
+		{
+			getSupportFragmentManager().beginTransaction()
+					.replace(R.id.container, fragment).commit();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
         
         return true;
     }

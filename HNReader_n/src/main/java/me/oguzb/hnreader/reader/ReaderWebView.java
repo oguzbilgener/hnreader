@@ -11,7 +11,6 @@ import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -36,8 +35,6 @@ public class ReaderWebView extends Activity
 	private WebView browser;
 	private ShareActionProvider mShareActionProvider;
 	private BrowserControls browserControls;
-
-	private GestureDetector clickDetector;
 	
 	private SharedPreferences prefs;
 	
@@ -114,6 +111,8 @@ public class ReaderWebView extends Activity
 		// Do not show icon/logo
 		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_TITLE|ActionBar.DISPLAY_HOME_AS_UP|ActionBar.DISPLAY_SHOW_CUSTOM);
 		actionBar.setCustomView(R.layout.reader_web_action_view);
+
+		getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new SystemUiVisibilityChangeListener());
 		
 		// Adjust some webview settings
 		browser.getSettings().setJavaScriptEnabled(true);
@@ -140,8 +139,6 @@ public class ReaderWebView extends Activity
 		
 		// finally, tell the webview to load our article url
 		browser.loadUrl(finalUrl);
-
-		clickDetector = new GestureDetector(this, new TapUpDetector());
     }
 
 	@Override
@@ -247,7 +244,6 @@ public class ReaderWebView extends Activity
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) {
 		super.onWindowFocusChanged(hasFocus);
-		Utils.log.d("onWindowFocusChanged: "+hasFocus);
 		if (hasFocus) {
 			if(isJellyBeanOrNew())
 				showActionBar();
@@ -332,32 +328,16 @@ public class ReaderWebView extends Activity
 		    			&& Math.abs(deltaX) < MAX_DISTANCE
 		    			&& Math.abs(deltaY) < MAX_DISTANCE)
 		    	{
-					if(isJellyBeanOrNew())
-		    			toggleActionBar();
+//					if(isJellyBeanOrNew())
+//		    			toggleActionBar();
 
 					if(isKitKatOrNew())
 						toggleSystemUI();
-		    		/*if(fullscreenAllowed)
-		    			toggleFullscreen(!actionBar.isShowing());*/
+
 		    		return false;
 		    	}
 		    }
-			// Doesn't work
-			return clickDetector.onTouchEvent(event);
-		}
-	}
-
-	private class TapUpDetector extends GestureDetector.SimpleOnGestureListener
-	{
-		@Override
-		public boolean onSingleTapUp(MotionEvent e)
-		{
-			Utils.log.e("SingleTapUp "+((getWindow().getDecorView().getSystemUiVisibility() & View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION) == 0));
-			if((getWindow().getDecorView().getSystemUiVisibility() & View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION) == 0)
-				hideSystemUI();
-			else
-				showSystemUI();
-			return true;
+			return false;
 		}
 	}
 	
@@ -395,8 +375,8 @@ public class ReaderWebView extends Activity
 			return;
 			if(loading)
 			{
-				if(isJellyBeanOrNew())
-					showActionBar();
+//				if(isJellyBeanOrNew())
+//					showActionBar();
 
 				if(isKitKatOrNew())
 					showSystemUI();
@@ -406,8 +386,8 @@ public class ReaderWebView extends Activity
 			}
 			else
 			{
-				if(isJellyBeanOrNew())
-					hideActionBar();
+//				if(isJellyBeanOrNew())
+//					hideActionBar();
 
 				if(isKitKatOrNew())
 					hideSystemUI();
@@ -710,6 +690,28 @@ public class ReaderWebView extends Activity
 			showSystemUI();
 		else
 			hideSystemUI();
+	}
+
+	private class SystemUiVisibilityChangeListener implements View.OnSystemUiVisibilityChangeListener
+	{
+		@Override
+		public void onSystemUiVisibilityChange(int visibility) {
+			if ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) {
+				// System bars are visible
+
+				if(isJellyBeanOrNew())
+					showActionBar();
+
+				// Workaround:
+				if(isKitKatOrNew())
+					showSystemUI();
+			} else {
+				// System bars are invisible
+
+				if(isJellyBeanOrNew())
+					hideActionBar();
+			}
+		}
 	}
 
 }
